@@ -2,7 +2,8 @@
 // @name        NEOPETS: Gallery Filter
 // @namespace   cox34-neoscripts
 // @match       https://impress.openneo.net/user/*/closet
-// @match       https://www.neopets.com/gallery/index.phtml
+// @match       https://www.neopets.com/gallery/index.phtml*
+// @match       https://www.neopets.com/gallery/?gu=*
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @version     1.0
