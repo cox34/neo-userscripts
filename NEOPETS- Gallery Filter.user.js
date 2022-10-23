@@ -6,7 +6,7 @@
 // @match       https://www.neopets.com/gallery/?gu=*
 // @grant       GM_setValue
 // @grant       GM_getValue
-// @version     1.0
+// @version     1.1
 // @author      cox34
 // @description Filter Neopets galleries with your DTI wishlist
 // ==/UserScript==
