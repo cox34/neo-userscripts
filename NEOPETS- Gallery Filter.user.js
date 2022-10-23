@@ -4,9 +4,10 @@
 // @match       https://impress.openneo.net/user/*/closet
 // @match       https://www.neopets.com/gallery/index.phtml*
 // @match       https://www.neopets.com/gallery/?gu=*
+// @match       https://items.jellyneo.net/mywishes/*
 // @grant       GM_setValue
 // @grant       GM_getValue
-// @version     1.1
+// @version     2.0
 // @author      cox34
 // @description Filter Neopets galleries with your DTI wishlist
 // ==/UserScript==
@@ -48,4 +49,21 @@ else if(document.URL.includes("www.neopets.com/gallery")){
     });
   });
   document.querySelector(".tableStyle").querySelector("center").append(filterButton);
+}
+
+else if(document.URL.includes("items.jellyneo.net/mywishes/")){
+  const filterButton = document.createElement("button");
+  filterButton.textContent = "Show only items from my wishlist (reload to unfilter)";
+  filterButton.style.borderRadius = "10px";
+  filterButton.addEventListener("click", e => {
+    let myWishList = GM_getValue("myWishList", []);
+    // myWishList.push("Baby Trick-or-Treat Bag"); //testing
+    document.querySelector("ul.item-block-grid").querySelectorAll("li").forEach(item => {
+      let itemName = item.textContent.replace(/\n/g,"");
+      if(!myWishList.some(wlItemName => itemName === wlItemName)){
+        item.remove();
+      }
+    });
+  });
+  document.querySelector("div.content-wrapper").querySelector("p").append(filterButton);
 }
